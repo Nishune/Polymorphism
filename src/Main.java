@@ -3,8 +3,9 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Movie movie = new Adventure("Pulp Fiction");
+        Movie movie = Movie.getMovie("Adventure", "Star Wars");
 
         movie.watchMovie();
+
     }
 }
