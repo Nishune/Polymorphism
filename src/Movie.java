@@ -21,6 +21,7 @@ public class Movie {
         };
     }
 }
+
 class Adventure extends Movie {
 
     public Adventure(String title) {
