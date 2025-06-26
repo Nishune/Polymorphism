@@ -10,8 +10,11 @@ public class CarMain {
         runRace(ferrari);
         System.out.println("\n");
 
-        Car tesla = new ElectricCar("Tesla Model X", 7.4, 6);
+        Car tesla = new ElectricCar("2022 Red Tesla Model 3", 568, 75);
         runRace(tesla);
+
+        Car ferrariHybrid = new HybridCar("2022 Ferrari Hybrid", 500, 6, 35);
+        runRace(ferrariHybrid);
 
     }
 
@@ -19,5 +22,6 @@ public class CarMain {
 
         car.startEngine();
         car.drive();
+        car.runEngine();
     }
 }
