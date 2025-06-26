@@ -2,25 +2,22 @@ public class CarMain {
 
     public static void main(String[] args) {
 
-
-        GasPoweredCar dieselCar = new GasPoweredCar("Volkswagen Diesel");
-        System.out.println(dieselCar.getDescription());
-        dieselCar.startEngine();
-        dieselCar.runEngine();
-        dieselCar.drive();
+        Car car = new Car("2022 Blue Ferrari 296 GTS");
+        runRace(car);
         System.out.println("\n");
 
-        ElectricCar tesla = new ElectricCar("Tesla");
-        System.out.println(tesla.getDescription());
-        tesla.startEngine();
-        tesla.runEngine();
-        tesla.drive();
+        Car ferrari = new GasPoweredCar("2022 Blue Ferrari 296 GTS", 15.4, 6);
+        runRace(ferrari);
         System.out.println("\n");
 
-        HybridCar mitsubishi = new HybridCar("Mitsubishi");
-        System.out.println(mitsubishi.getDescription());
-        mitsubishi.startEngine();
-        mitsubishi.runEngine();
-        mitsubishi.drive();
+        Car tesla = new ElectricCar("Tesla Model X", 7.4, 6);
+        runRace(tesla);
+
+    }
+
+    public static void runRace (Car car) {
+
+        car.startEngine();
+        car.drive();
     }
 }

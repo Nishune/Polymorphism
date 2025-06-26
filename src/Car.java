@@ -7,50 +7,43 @@ public class Car {
     }
 
     public void startEngine() {
-        System.out.println("Engine is started");
-    }
-    public void drive() {
-        System.out.println("Driving");
+        System.out.println("Car -> startEngine");
     }
     protected void runEngine() {
-        System.out.println("Running Engine..");
+        System.out.println("Car -> runEngine");
     }
-
-    public String getDescription() {
-        return description;
+    public void drive() {
+        System.out.println("Car -> Driving, type is " + getClass().getSimpleName());
+        runEngine();
     }
 }
 
 class GasPoweredCar extends Car {
-
-    private Double avgKmPerLitre;
+    private double avgKmPerLiter;
     private int cylinders;
 
     public GasPoweredCar(String description) {
         super(description);
     }
 
+    public GasPoweredCar(String description, double avgKmPerLiter, int cylinders) {
+        super(description);
+        this.avgKmPerLiter = avgKmPerLiter;
+        this.cylinders = cylinders;
+    }
+
     @Override
     public void startEngine() {
-        super.startEngine();
-        System.out.println("Using GasPoweredCar");
+        System.out.printf("Gas -> All %d cyliders are fired up, Ready !%n", cylinders);
     }
 
     @Override
     protected void runEngine() {
-        super.runEngine();
-        avgKmPerLitre = 0.4;
-        System.out.println("Consuming  " + avgKmPerLitre * 10 + "L per swedish mile.");
-    }
-    @Override
-    public void drive() {
-        cylinders = 4;
-        System.out.println("Driving on " + cylinders + " cylinders.");
+        System.out.printf("Gas -> usage exceeds the average: %.2f %n", avgKmPerLiter);
     }
 }
 
 class ElectricCar extends Car {
-
     private double avgKmPerCharge;
     private int batterySize;
 
@@ -58,50 +51,18 @@ class ElectricCar extends Car {
         super(description);
     }
 
-    @Override
-    public void startEngine() {
-        System.out.println("Pressing a button to boot up " + getClass().getSimpleName());
-        super.startEngine();
-    }
-
-    @Override
-    protected void runEngine() {
-        batterySize = 4;
-        avgKmPerCharge = 500;
-        System.out.println("This car can reach " + avgKmPerCharge / 10 + " European miles per charge");
-    }
-
-    @Override
-    public void drive() {
-        batterySize = 4;
-        System.out.println(getClass().getSimpleName() + " is running on " + batterySize + " batteries");
-    }
-}
-
-class HybridCar extends Car {
-
-    private double avgKmPerLitre;
-    private int batterySize;
-    private int cylinders;
-
-    public HybridCar(String description) {
+    public ElectricCar(String description, double avgKmPerCharge, int batterySize) {
         super(description);
+        this.avgKmPerCharge = avgKmPerCharge;
+        this.batterySize = batterySize;
     }
 
     @Override
     public void startEngine() {
-        System.out.println("Pressing a button to boot up " + getClass().getSimpleName());
-        super.startEngine();
+        System.out.println("Electric -> All electrons are fired up in the " + batterySize + " batteries & ready to go!");
     }
     @Override
     protected void runEngine() {
-        batterySize = 4;
-        cylinders = 4;
-        System.out.println("The car is running on " + batterySize + " batteries and " + cylinders + " cylinders.");
-    }
-    @Override
-    public void drive() {
-        avgKmPerLitre = 18;
-        System.out.println("The car is now driving on both battery and cylinders. The consumption per litre is " + avgKmPerLitre + " L");
+        System.out.printf("Electric -> usage exceeds the average: %.2f %n", avgKmPerCharge);
     }
 }
